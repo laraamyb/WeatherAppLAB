@@ -26,7 +26,6 @@ function getCurrentPosition() {
 let button = document.getElementById("#current-location");
 button.addEventListener("click", getCurrentPosition);
 let weekDays = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-function day;
 
 let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 var dt = new Date();
