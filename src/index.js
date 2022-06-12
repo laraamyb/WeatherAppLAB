@@ -23,7 +23,7 @@ function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(displayLocation);
 }
 
-let button = document.getElementById("#current-location");
+let button = document.querySelector("#current-location");
 button.addEventListener("click", getCurrentPosition);
 
 let weekDays = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
