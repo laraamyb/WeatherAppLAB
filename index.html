@@ -10,60 +10,62 @@
 </head>
 <body>
 <div class="container">
-      <header>
-        Weather
+    <header>
+        Weather Search
     </header>
-    <form id="search-form">
-        <div class="form-group">
-          <label for="city-input">City</label>
-          <form>
-          <input type="text" class="form-control" id="city-input" aria-describedby="city-input" placeholder="Type city...">
-          <div class="gcse-search"></div></div>
-          <input type="submit" class="btn btn-info" value="Search"/>
-          <button type="button" class="btn btn-info" id="current-location">Current Location</button>
-      </form>
-      <h1 id=city-input> </h1>
-  
-    <div class="row">
-      <div class="col-6 box"> 
-          <h2> Today's Weather in <div id="city-display"></div></h2>
-          <p>Current Date and Time is <span id="date-time"></span>.</p>
-<p> Temperature 23</p>
-<p> Precipitation</p>
-<p> Wind Speed</p>
-      </div>
-      <div class="col-6 weekday">
-          <div class="row"> 
-              <div class="col-4 box" id="day-one"> 
-                  <h3>Monday</h3>
-                  <p> Temperature: 24</p>
-              </div>
-            <div class= "col-4 box" id="day-two">
-                <h3>Tuesday</h3>
-                <p> Temperature: 24</p>
-            </div> 
-            <div class="col-4 box" id="day-three"> 
-                <h3>Wednesday </h3>
-                <p> Temperature: 24</p>
-            </div>
-          </div>
-          <div class="w-100"></div>
-          <div class="row"> 
-            <div class="col-4 box" id="day-four"> 
-                <h3>Thursday </h3>
-                <p> Temperature: 24</p>
-            </div>
-            <div class="col-4 box" id="day-five"> 
-              <h3>Friday </h3>
-              <p> Temperature: 24</p>
-          </div>
-          <div class="col-4 box" id="day-six"> 
-              <h3>Saturday </h3>
-              <p> Temperature: 24</p>
-          </div>
-        </div>
-    </div>
-    </div>
+    <div class="wrapper">
+        <div class="search">
+         <form id="search-form">
+             <div class="form-group">
+               <label for="city-input">City</label>
+               <form>
+               <input type="text" class="form-control" id="city-input" aria-describedby="city-input" placeholder="Type city...">
+               <div class="gcse-search"></div></div>
+               <input type="submit" class="btn btn-info" value="Search"/>
+               <button type="button" class="btn btn-info" id="current-location">Current Location</button>
+           </form>
+        </div> 
+        <div class="col-6 today">
+         <div class="row"> 
+                 <h2> Today's Weather in <div id="city-display"></div></h2>
+                 <p>Current Date and Time is <span id="date-time"></span>.</p>
+       <p> Temperature <Span id="temp-today"></Span></p>
+       <p> Precipitation<Span id="prec-today"></Span></p>
+       <p> Wind Speed <Span id="wind-today"></Span></p>
+     </div>
+     </div>
+         <div class="col-6 forecast" id="forecast">
+             <div class="row"> 
+                 <div class="col-4 box"> 
+                     <h3 id="day-one"></h3>
+                     <p> Temperature: <Span id="temp-one"></Span></p>
+                 </div>
+               <div class= "col-4 box">
+                   <h3 id="day-two"></h3>
+                   <p> Temperature: <Span id="temp-two"></Span></p>
+               </div> 
+               <div class="col-4 box"> 
+                   <h3 id="day-three"></h3>
+                   <p> Temperature: <Span id="temp-three"></Span></p>
+               </div>
+             </div>
+             <div class="w-100"></div>
+             <div class="row"> 
+               <div class="col-4 box"> 
+                   <h3 id="day-four"></h3>
+                   <p> Temperature: <Span id="temp-four"></Span></p>
+               </div>
+               <div class="col-4 box"> 
+                 <h3 id="day-five"></h3>
+                 <p> Temperature: <Span id="temp-five"></Span></p>
+             </div>
+             <div class="col-4 box"> 
+                 <h3 id="day-six"></h3>
+                 <p> Temperature: <Span id="temp-six"></Span></p>
+             </div>
+           </div>
+       </div>
+       </div>
 </div>
 <footer><a href="https://github.com/laraamyb/WeatherAppLAB.git" target="_blank">GitHub Link</a></footer>
 <script src="src/index.js"></script>
