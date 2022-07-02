@@ -5,7 +5,7 @@ function search(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#city-input");
   let cityDisplay = document.querySelector("#city-display");
-cityDisplay.innerHTML = searchInput.value;
+  cityDisplay.innerHTML = searchInput.value;
 }
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
@@ -22,9 +22,9 @@ function displayLocation(position) {
   function showCity(response) {
     console.log(response.data);
     axios.get(apiUrl);
-    let city = response.data.name;
-    let cityDisplay = document.querySelector("#city-display");
-    cityDisplay.innerHTML = city.value;
+    let curentCity = response.data.name;
+    let currentDisplay = document.querySelector("#city-display");
+    currentDisplay.innerHTML = currentCity.value;
   }
 }
 function getCurrentPosition() {
