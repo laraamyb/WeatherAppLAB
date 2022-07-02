@@ -1,3 +1,6 @@
+let apiKey ="177424da3f8dbafeadee840a7b087feb";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city-input}&appid=${apiKey}`;
+
 function search(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#city-input");
