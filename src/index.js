@@ -4,7 +4,6 @@ function searchCity(event) {
   let city = searchInput.value;
   let cityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(cityUrl).then(displaySearchCity);
-  console.log(cityUrl)
 }
 function getLocation(city) {
   let lat = city.coords.latitude;
@@ -18,6 +17,7 @@ function getCurrentPosition() {
 function displaySearchCity (response){
   searchCityDisplay = document.querySelector("#city-display");
   searchCityDisplay.innerHTML = response.data.name;
+  displayForecast;
 }
 
 function displayCurrentCity(response){
@@ -25,29 +25,8 @@ function displayCurrentCity(response){
   currentCityDisplay.innerHTML = response.data[0].name;
   let city = response.data[0].name;
   let cityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(cityUrl).then(displayForecast)
-}
-function displayForecast (weather){
-  tempToday = document.querySelector("#temp-today");
-  tempToday.innerHTML = weather.data.temp;
-  tempOne = document.querySelector("#temp-one");
-  tempTwo = document.querySelector("#temp-two");
-  tempThree = document.querySelector("#temp-three");
-  tempFour = document.querySelector("#temp-four");
-  tempFive = document.querySelector("#temp-five");
-  tempSix = document.querySelector("#temp-six");
-
-  precToday = document.querySelector("#prec-today");
-  windToday = document.querySelector("#wind-today");
-
-  today = document.querySelector("#today");
-  dayOne = document.querySelector("#day-one");
-  dayTwo = document.querySelector("#day-two");
-  dayThree = document.querySelector("#day-three");
-  dayFour = document.querySelector("#day-four");
-  dayFive = document.querySelector("#day-five");
-  daySix = document.querySelector("#day-six");
- 
+  axios.get(cityUrl).then(displayForecast);
+  console.log(cityUrl)
 }
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchCity);
