@@ -1,22 +1,22 @@
 header {
-    color: #128494;
+    color: #34495e;
     display: block;
     padding: 5px;
     text-align: center;
     font-size: 30px;
     text-shadow: 6px 17px 26px rgba(9, 81, 92, 0.8);
     font-weight: bold;
+    background-color: transparent;
   }
   .date {
-    text-align: left;
+    text-align: center;
     font-size: small;
-    font-style: italic;
   }
   .container {
-    color: #128494;
+    color: #22313f;
     text-overflow: clip;
     font-size: 100%;
-    background: linear-gradient(0deg, #4ef037 0%, #ecfeff 64%);
+    background: linear-gradient(0deg,#e4f1fe 0%, #8dc6ff 100%);
     border: 3px double;
     border-radius: 26px;
     margin: 0 auto;
@@ -25,7 +25,7 @@ header {
     font-weight: bold;
   }
   .box {
-    color: #128494;
+    color: #34495e;
     text-overflow: clip;
     font-size: 100%;
     padding: 2%;

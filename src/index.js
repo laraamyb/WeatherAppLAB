@@ -10,7 +10,7 @@ precElement.innerHTML = response.data.main.humidity;
 let windElement  = document.querySelector("#wind-today");
 windElement.innerHTML = response.data.wind.speed;
 let iconElement = document.querySelector("#icon");
-descriptionElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
 function searchCity(event) {
   event.preventDefault();
