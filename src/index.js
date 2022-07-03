@@ -1,8 +1,9 @@
 function displayForecast (response){
-  let searchCityDisplay = document.querySelector("#city-display");
-  searchCityDisplay.innerHTML = response.data.name
+let searchCityDisplay = document.querySelector("#city-display");
+searchCityDisplay.innerHTML = response.data.name
 let tempElement = document.querySelector("#temp-today");
-tempElement.innerHTML = math.round(response.data.main.temp);
+tempElement.innerHTML = Math.round(response.data.main.temp);
+celciusTemp = response.data.main.temp;
 let descriptionElement  = document.querySelector("#description");
 descriptionElement.innerHTML = response.data.weather[0].description;
 let precElement  = document.querySelector("#prec-today");
@@ -33,12 +34,11 @@ console.log(cityUrl)}
 function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(getLocation);
 }
-function changeUnits(event){
+function displayFarenheit(event){
   event.preventDefault();
-  let farenheitTemperature = (response.data.main.temp * 9/5) + 32;
-  alert(farenheitTemperature);
-  tempElement.innerHTML = math.round(farenheitTemperature)
-
+  let farenheitTemperature = (celciusTemp * 9/5) + 32;
+  let tempElement = document.querySelector("#temp-today");
+  tempElement.innerHTML = Math.round(farenheitTemperature)
 }
 
 let form = document.querySelector("#search-form");
@@ -48,10 +48,10 @@ let button = document.querySelector("#current-location");
 button.addEventListener("click", getCurrentPosition);
 
 let farenheitLink = document.querySelector("#farenheit-link");
-farenheitLink.addEventListener("click", changeUnits);
+farenheitLink.addEventListener("click", displayFarenheit);
 
 let apiKey ="177424da3f8dbafeadee840a7b087feb";
-
+let celciusTemp = null;
 
 let weekDays = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
