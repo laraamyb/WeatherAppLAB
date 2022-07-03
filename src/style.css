@@ -17,8 +17,9 @@ header {
     text-overflow: clip;
     font-size: 100%;
     background: linear-gradient(0deg,#e4f1fe 0%, #8dc6ff 100%);
-    border: 3px double;
-    border-radius: 26px;
+    border: 3px;
+    border-color: #e4f1fe;
+    border-radius: 20px;
     margin: 0 auto;
     padding: 2%;
     font-family: Arial, Helvetica, sans-serif;
@@ -33,4 +34,33 @@ header {
     border-width: 2px;
     border-radius: 3px;
   }
-  
+  .icon{
+    border-color: e4f1fe;
+    border-radius: 20px;
+    border-width: 3px;
+    border-style: solid;
+    display: block;
+    margin-inline: auto;
+  }
+  a{
+    color: #34495e; 
+  }
+  button{
+  background-color: #8dc6ff;
+  }
+  input{
+    background-color: #8dc6ff;
+    }
+  .capitalise{
+    text-transform: capitalize;
+    text-align: center;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    footer{
+      font-size: smaller;
+      text-align: center;
+    }
