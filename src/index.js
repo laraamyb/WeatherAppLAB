@@ -1,3 +1,19 @@
+function formatDate(timestamp)
+{ let date = new date(timestamp);
+  let hours = date.getHours();
+  if (hours <10) {
+    hours = `0${hours}`
+  }
+  let minutes = date.getMinutes();
+  if (minutes <10) {
+    minutes = `0${minutes}`
+  }
+let days = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+let day = days[date.getDay()];
+let dateTime = document.querySelector("#date-time");
+dateTime.innerHTML = `${day} - ${hours}:${minutes}`;
+console.log(`${day} - ${hours}:${minutes}`)
+}
 function displayForecast (response){
 let searchCityDisplay = document.querySelector("#city-display");
 searchCityDisplay.innerHTML = response.data.name
@@ -64,8 +80,4 @@ celsiusLink.addEventListener("click", displayCelsius);
 
 let apiKey ="177424da3f8dbafeadee840a7b087feb";
 let celsiusTemp = null;
-
-let weekDays = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-var dt = new Date()
-document.getElementById('date-time').innerHTML=dt;
