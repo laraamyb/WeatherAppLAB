@@ -3,7 +3,7 @@ let searchCityDisplay = document.querySelector("#city-display");
 searchCityDisplay.innerHTML = response.data.name
 let tempElement = document.querySelector("#temp-today");
 tempElement.innerHTML = Math.round(response.data.main.temp);
-celciusTemp = response.data.main.temp;
+celsiusTemp = response.data.main.temp;
 let descriptionElement  = document.querySelector("#description");
 descriptionElement.innerHTML = response.data.weather[0].description;
 let precElement  = document.querySelector("#prec-today");
@@ -36,9 +36,18 @@ function getCurrentPosition() {
 }
 function displayFarenheit(event){
   event.preventDefault();
-  let farenheitTemperature = (celciusTemp * 9/5) + 32;
   let tempElement = document.querySelector("#temp-today");
-  tempElement.innerHTML = Math.round(farenheitTemperature)
+  celsiusLink.classList.remove("active");
+  farenheitLink.classList.add("active");
+  let farenheitTemp = (celsiusTemp * 9/5) + 32;
+  tempElement.innerHTML = Math.round(farenheitTemp)
+}
+function displayCelsius (event){
+  event.preventDefault();
+  let tempElement = document.querySelector("#temp-today");
+  celsiusLink.classList.add("active");
+  farenheitLink.classList.remove("active");
+  tempElement.innerHTML = Math.round(celsiusTemp)
 }
 
 let form = document.querySelector("#search-form");
@@ -50,8 +59,11 @@ button.addEventListener("click", getCurrentPosition);
 let farenheitLink = document.querySelector("#farenheit-link");
 farenheitLink.addEventListener("click", displayFarenheit);
 
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsius);
+
 let apiKey ="177424da3f8dbafeadee840a7b087feb";
-let celciusTemp = null;
+let celsiusTemp = null;
 
 let weekDays = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]

@@ -42,8 +42,6 @@ header {
     display: block;
     margin-inline: auto;
   }
-  a{
-    color: #34495e; 
   }
   button{
   background-color: #8dc6ff;
@@ -63,4 +61,12 @@ header {
     footer{
       font-size: smaller;
       text-align: center;
+    }
+    .weather-today .active{
+      color: #34495e; 
+      cursor: default;
+      text-decoration: none;
+    }
+    .weather-today .active:hover{
+     text-decoration: none;
     }
