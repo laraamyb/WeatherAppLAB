@@ -2,11 +2,15 @@ function displayForecast (response){
   let searchCityDisplay = document.querySelector("#city-display");
   searchCityDisplay.innerHTML = response.data.name
 let tempElement = document.querySelector("#temp-today");
-.innerHTML = response.data.temp
+tempElement.innerHTML = response.data.main.temp;
 let descriptionElement  = document.querySelector("#description");
+descriptionElement.innerHTML = response.data.weather[0].description;
 let precElement  = document.querySelector("#prec-today");
+precElement.innerHTML = response.data.main.humidity;
 let windElement  = document.querySelector("#wind-today");
-
+windElement.innerHTML = response.data.wind.speed;
+let iconElement = document.querySelector("#icon");
+descriptionElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
 function searchCity(event) {
   event.preventDefault();
@@ -23,7 +27,7 @@ function getLocation(city) {
  function getCity (response){
   let city = response.data[0].name;
   let cityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(cityUrl).then(displayForecast)
+  axios.get(cityUrl).then(displayForecast);
 console.log(cityUrl)}
 }
 function getCurrentPosition() {
