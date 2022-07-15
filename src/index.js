@@ -10,13 +10,12 @@ function formatDate(timestamp)
   }
 let days = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 let day = days[date.getDay()];
-let dateTime = document.querySelector("#date-time");
 dateTime.innerHTML = `${day} - ${hours}:${minutes}`;
 console.log(`${day} - ${hours}:${minutes}`)
 }
 function displayForecast (response){
 let searchCityDisplay = document.querySelector("#city-display");
-searchCityDisplay.innerHTML = response.data.name
+searchCityDisplay.innerHTML = response.data.name;
 let tempElement = document.querySelector("#temp-today");
 tempElement.innerHTML = Math.round(response.data.main.temp);
 celsiusTemp = response.data.main.temp;
@@ -28,14 +27,24 @@ let windElement  = document.querySelector("#wind-today");
 windElement.innerHTML = response.data.wind.speed;
 let iconElement = document.querySelector("#icon");
 iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
-}
+weeklyForecast();
+function weeklyForecast (response){
+let cityName = response.data.name;
+  let weekUrl= `https://api.openweathermap.org/data/2.5/forecast/daily?q=4${cityName}&cnt=6&appid=${apiKey}`;
+  axios.get(weekUrl);
+  console.log(weekUrl);
+  let dayOne = document.querySelector("#day-one");
+  let tempOne = document.querySelector("#temp-one");
+  let dayTwo = document.querySelector("#day-two");
+  let tempTwo = document.querySelector("#temp-two");
+}}
 function searchCity(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#city-input");
   let city = searchInput.value;
   let cityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(cityUrl).then(displayForecast);
-}
+  }
 function getLocation(city) {
   let lat = city.coords.latitude;
   let long = city.coords.longitude;
@@ -45,8 +54,7 @@ function getLocation(city) {
   let city = response.data[0].name;
   let cityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(cityUrl).then(displayForecast);
-console.log(cityUrl)}
-}
+  }}
 function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(getLocation);
 }
@@ -66,6 +74,8 @@ function displayCelsius (event){
   tempElement.innerHTML = Math.round(celsiusTemp)
 }
 
+let dateTime = document.querySelector("#date-time");
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchCity);
 
@@ -79,5 +89,4 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsius);
 
 let apiKey ="177424da3f8dbafeadee840a7b087feb";
-let celsiusTemp = null;
-let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+let celsiusTemp = null
