@@ -14,12 +14,13 @@ dateTime.innerHTML = `${day} - ${hours}:${minutes}`;
 console.log(`${day} - ${hours}:${minutes}`)
 }
 function getForecastData (response){
-let forecastApi= `http://api.openweathermap.org/data/2.5/forecast?lat=${response.lat}&lon=${response.lon}&cnt=6&appid=${apiKey}&units=metric`;
+let forecastApi= `http://api.openweathermap.org/data/2.5/forecast?lat=${response.lat}&lon=${response.lon}&cnt=12&appid=${apiKey}&units=metric`;
 axios.get(forecastApi).then(displayForecast);
 console.log(forecastApi)}
 
 function displayForecast(response){
-  let forecast = response.data.list;
+  let array = response.data.list;
+  let forecast = array.splice(0,3);
   console.log(forecast);
   let forecastHTML = `<div class="row">`
 forecast.forEach(function (forecastDay){
@@ -30,8 +31,8 @@ forecast.forEach(function (forecastDay){
     <div class="row-6 box text-truncate"> 
    <h3 id="date">${date}</h3>
    <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" class="icon" id="icon"/> <br/>
-    <p> Temperature: <Span id="temp-forecast-max">${forecastDay.main.temp_max}</Span><span class="units">°C |<a href="#" id="farenheit-link"> °F</a> </span></p>
-    <Span id="temp-forecast-min">${forecastDay.main.temp_min}</Span><span class="units">°C |<a href="#" id="farenheit-link"> °F</a> </span>
+    <p> Temperature: <Span id="temp-forecast-max">${forecastDay.main.temp_max}</Span><span class="units"><a href="#" class="active" id="celsius-link"> °C</a> |<a href="#" id="farenheit-link"> °F</a> </span></p>
+    <Span id="temp-forecast-min">${forecastDay.main.temp_min}</Span><span class="units"><a href="#" class="active" id="celsius-link"> °C</a> |<a href="#" id="farenheit-link"> °F</a></span>
     </div>
    </div>`;
     forecastHTML = forecastHTML + `</div>`;
