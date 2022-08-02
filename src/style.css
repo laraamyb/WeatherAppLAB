@@ -40,7 +40,7 @@ header {
     border-width: 3px;
     border-style: solid;
     display: block;
-    margin-inline: auto;
+    margin-inline: 0 auto;
   }
   button{
   background-color: #8dc6ff;

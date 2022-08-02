@@ -31,8 +31,8 @@ forecast.forEach(function (forecastDay){
     <div class="row-6 box text-truncate"> 
    <h3 id="date">${date}</h3>
    <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" class="icon" id="icon"/> <br/>
-    <p> Temperature: <Span id="temp-forecast-max">${forecastDay.main.temp_max}</Span><span class="units"><a href="#" class="active" id="celsius-link"> °C</a> |<a href="#" id="farenheit-link"> °F</a> </span></p>
-    <Span id="temp-forecast-min">${forecastDay.main.temp_min}</Span><span class="units"><a href="#" class="active" id="celsius-link"> °C</a> |<a href="#" id="farenheit-link"> °F</a></span>
+    <p> Temperature: <Span id="temp-forecast-max">${forecastDay.main.temp_max}<span class="units"><a href="#" class="active" id="celsius-link"> °C</a> |<a href="#" id="farenheit-link"> °F</a> </span></Span>
+    <Span id="temp-forecast-min">${forecastDay.main.temp_min}<span class="units"><a href="#" class="active" id="celsius-link"> °C</a> |<a href="#" id="farenheit-link"> °F</a></span></Span></p>
     </div>
    </div>`;
     forecastHTML = forecastHTML + `</div>`;
@@ -78,7 +78,7 @@ function getCurrentPosition() {
 }
 function displayFarenheit(event){
   event.preventDefault();
-  let tempElement = document.querySelector("#temp-today");
+  let tempElement = document.querySelectorAll("#temp-today, #temp-forecast-max, #temp-forecast-min");
   celsiusLink.classList.remove("active");
   farenheitLink.classList.add("active");
   let farenheitTemp = (celsiusTemp * 9/5) + 32;
@@ -86,12 +86,13 @@ function displayFarenheit(event){
 }
 function displayCelsius (event){
   event.preventDefault();
-  let tempElement = document.querySelector("#temp-today");
+  let tempElement = document.querySelectorAll("#temp-today, #temp-forecast-max, #temp-forecast-min");
   celsiusLink.classList.add("active");
   farenheitLink.classList.remove("active");
   tempElement.innerHTML = Math.round(celsiusTemp)
 }
-
+let apiKey ="177424da3f8dbafeadee840a7b087feb";
+let celsiusTemp = null;
 let dateTime = document.querySelector("#date-time");
 
 let form = document.querySelector("#search-form");
@@ -105,6 +106,3 @@ farenheitLink.addEventListener("click", displayFarenheit);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsius);
-
-let apiKey ="177424da3f8dbafeadee840a7b087feb";
-let celsiusTemp = null;
