@@ -18,10 +18,9 @@ let forecastApi= `http://api.openweathermap.org/data/2.5/forecast?lat=${response
 axios.get(forecastApi).then(displayForecast);}
 
 function displayForecast(response){
-  let forecast = response.data.list;
+  let forecast = response.data.list.[0];
   console.log(forecast);
   let forecastElement = document.querySelector("#forecast");
-  let days =["Tues", "Wed","Thu", "Fri", "Sat"];
   let forecastHTML = `<div class="row">`
   forecast.forEach(function (forecastDay){
   forecastHTML = forecastHTML + ` 
