@@ -14,30 +14,34 @@ dateTime.innerHTML = `${day} - ${hours}:${minutes}`;
 console.log(`${day} - ${hours}:${minutes}`)
 }
 function getForecastData (response){
-let forecastApi= `http://api.openweathermap.org/data/2.5/forecast?lat=${response.lat}&lon=${response.lon}&cnt=12&appid=${apiKey}&units=metric`;
+let forecastApi= `http://api.openweathermap.org/data/2.5/forecast?lat=${response.lat}&lon=${response.lon}&cnt=15&appid=${apiKey}&units=metric`;
 axios.get(forecastApi).then(displayForecast);
 console.log(forecastApi)}
 
 function displayForecast(response){
   let array = response.data.list;
-  let forecast = array.splice(0,3);
-  console.log(forecast);
-  let forecastHTML = `<div class="row">`
-forecast.forEach(function (forecastDay){
-  let date = new Date(forecastDay.dt * 1000).toDateString();
-  console.log (date);
-  let forecastElement = document.querySelector("#forecast");
-  forecastHTML = forecastHTML + ` 
-    <div class="row-6 box text-truncate"> 
-   <h3 id="date">${date}</h3>
-   <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" class="icon" id="icon"/> <br/>
-    <p> Temperature: <Span id="temp-forecast-max">${forecastDay.main.temp_max}<span class="units"><a href="#" class="active" id="celsius-link"> °C</a> |<a href="#" id="farenheit-link"> °F</a> </span></Span>
-    <Span id="temp-forecast-min">${forecastDay.main.temp_min}<span class="units"><a href="#" class="active" id="celsius-link"> °C</a> |<a href="#" id="farenheit-link"> °F</a></span></Span></p>
-    </div>
-   </div>`;
-    forecastHTML = forecastHTML + `</div>`;
-    forecastElement.innerHTML = forecastHTML;
-})}
+  let i;
+  for (i = 0; i < array.length; i=+2);
+  {
+   let forecast = array[i];
+   console.log([forecast]);
+   let forecastHTML = `<div class="row">`
+   forecast.forEach(function (forecastDay){
+     let date = new Date(forecastDay.dt * 1000).toDateString();
+     console.log (date);
+     let forecastElement = document.querySelector("#forecast");
+     forecastHTML = forecastHTML + ` 
+       <div class="col-2 text-truncate"> 
+      <h3 id="date">${date}</h3>
+      <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" class="icon" id="icon"/> <br/>
+       <p> Temperature: <Span id="temp-forecast-max">${forecastDay.main.temp_max}<span class="units"><a href="#" class="active" id="celsius-link"> °C</a> |<a href="#" id="farenheit-link"> °F</a> </span></Span>
+       <Span id="temp-forecast-min">${forecastDay.main.temp_min}<span class="units"><a href="#" class="active" id="celsius-link"> °C</a> |<a href="#" id="farenheit-link"> °F</a></span></Span></p>
+       </div>
+      </div>`;
+       forecastHTML = forecastHTML + `</div>`;
+       forecastElement.innerHTML = forecastHTML;
+   })
+}}
 function displayTemperature (response){
 let searchCityDisplay = document.querySelector("#city-display");
 searchCityDisplay.innerHTML = response.data.name;
